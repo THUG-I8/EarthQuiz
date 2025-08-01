@@ -7,13 +7,23 @@ import com.google.gson.reflect.TypeToken
 object QuizRepository {
     
     fun loadQuestions(context: Context): List<Question> {
-        val json = context.assets.open("questions.json").bufferedReader().use { it.readText() }
-        return Gson().fromJson(json, object : TypeToken<List<Question>>() {}.type)
+        return try {
+            val json = context.assets.open("questions.json").bufferedReader().use { it.readText() }
+            Gson().fromJson(json, object : TypeToken<List<Question>>() {}.type)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
+        }
     }
     
     fun loadCategories(context: Context): List<Category> {
-        val json = context.assets.open("categories.json").bufferedReader().use { it.readText() }
-        return Gson().fromJson(json, object : TypeToken<List<Category>>() {}.type)
+        return try {
+            val json = context.assets.open("categories.json").bufferedReader().use { it.readText() }
+            Gson().fromJson(json, object : TypeToken<List<Category>>() {}.type)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
+        }
     }
     
     fun getFilteredQuestions(

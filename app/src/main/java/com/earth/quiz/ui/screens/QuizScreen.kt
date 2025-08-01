@@ -28,14 +28,24 @@ fun QuizScreen() {
             QuizState.SETUP -> {
                 QuizSetupScreen(
                     onStartQuiz = { settings ->
-                        quizSettings = settings
-                        questions = QuizRepository.getFilteredQuestions(context, settings)
-                        currentIndex = 0
-                        score = 0
-                        correctAnswers = emptyList()
-                        wrongAnswers = emptyList()
-                        totalTimeSpent = 0
-                        quizState = QuizState.PLAYING
+                        try {
+                            quizSettings = settings
+                            questions = QuizRepository.getFilteredQuestions(context, settings)
+                            if (questions.isNotEmpty()) {
+                                currentIndex = 0
+                                score = 0
+                                correctAnswers = emptyList()
+                                wrongAnswers = emptyList()
+                                totalTimeSpent = 0
+                                quizState = QuizState.PLAYING
+                            } else {
+                                // Show error or stay in setup
+                                // For now, just stay in setup
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            // Stay in setup state
+                        }
                     }
                 )
             }
