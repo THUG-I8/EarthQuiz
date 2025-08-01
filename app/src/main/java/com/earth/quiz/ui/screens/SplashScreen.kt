@@ -85,7 +85,6 @@ fun SplashScreen(
                     .scale(scale)
                     .graphicsLayer {
                         shadowElevation = if (startAnimation) 20f else 0f
-                        alpha = alpha
                     },
                 color = QuizColors.ElectricPurple
             )
