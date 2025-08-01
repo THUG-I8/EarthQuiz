@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.earth.quiz.data.Question
 import kotlinx.coroutines.delay
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuestionCard(
     question: Question,
