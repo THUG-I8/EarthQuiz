@@ -91,17 +91,20 @@ fun QuestionCard(
             FilterChip(
                 onClick = { },
                 label = { Text(question.category) },
-                selected = false
+                selected = false,
+                colors = FilterChipDefaults.filterChipColors()
             )
             FilterChip(
                 onClick = { },
                 label = { Text(question.topic) },
-                selected = false
+                selected = false,
+                colors = FilterChipDefaults.filterChipColors()
             )
             FilterChip(
                 onClick = { },
                 label = { Text(question.difficulty) },
-                selected = false
+                selected = false,
+                colors = FilterChipDefaults.filterChipColors()
             )
         }
         
