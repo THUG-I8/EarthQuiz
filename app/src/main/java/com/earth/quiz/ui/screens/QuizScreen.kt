@@ -7,13 +7,13 @@ import com.earth.quiz.ui.theme.EarthQuizTheme
 import kotlinx.coroutines.delay
 
 enum class QuizState {
-    SETUP, PLAYING, RESULTS
+    SPLASH, MAIN_MENU, SETUP, PLAYING, RESULTS, STATS, SETTINGS, ABOUT
 }
 
 @Composable
 fun QuizScreen() {
     val context = LocalContext.current
-    var quizState by remember { mutableStateOf(QuizState.SETUP) }
+    var quizState by remember { mutableStateOf(QuizState.SPLASH) }
     var quizSettings by remember { mutableStateOf(QuizSettings()) }
     var questions by remember { mutableStateOf<List<Question>>(emptyList()) }
     var currentIndex by remember { mutableStateOf(0) }
@@ -25,6 +25,31 @@ fun QuizScreen() {
 
     EarthQuizTheme {
         when (quizState) {
+            QuizState.SPLASH -> {
+                SplashScreen(
+                    onSplashComplete = {
+                        quizState = QuizState.MAIN_MENU
+                    }
+                )
+            }
+            
+            QuizState.MAIN_MENU -> {
+                MainMenuScreen(
+                    onStartQuiz = {
+                        quizState = QuizState.SETUP
+                    },
+                    onViewStats = {
+                        quizState = QuizState.STATS
+                    },
+                    onSettings = {
+                        quizState = QuizState.SETTINGS
+                    },
+                    onAbout = {
+                        quizState = QuizState.ABOUT
+                    }
+                )
+            }
+            
             QuizState.SETUP -> {
                 QuizSetupScreen(
                     onStartQuiz = { settings ->
@@ -118,12 +143,36 @@ fun QuizScreen() {
                         quizState = QuizState.PLAYING
                     },
                     onBackToMenu = {
-                        quizState = QuizState.SETUP
+                        quizState = QuizState.MAIN_MENU
                     },
                     onShare = {
                         // TODO: Implement sharing functionality
                         val shareText = "حصلت على ${result.score}/${result.total} (${(result.score.toFloat() / result.total * 100).toInt()}%) في كويز ${result.category}! 🧠✨"
                         // Intent sharing code would go here
+                    }
+                )
+            }
+            
+            QuizState.STATS -> {
+                StatsScreen(
+                    onBack = {
+                        quizState = QuizState.MAIN_MENU
+                    }
+                )
+            }
+            
+            QuizState.SETTINGS -> {
+                SettingsScreen(
+                    onBack = {
+                        quizState = QuizState.MAIN_MENU
+                    }
+                )
+            }
+            
+            QuizState.ABOUT -> {
+                AboutScreen(
+                    onBack = {
+                        quizState = QuizState.MAIN_MENU
                     }
                 )
             }
