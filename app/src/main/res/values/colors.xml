@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary colors -->
+    <color name="primary">#1976D2</color>
+    <color name="primaryVariant">#1565C0</color>
+    <color name="primaryDark">#0D47A1</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    
+    <!-- Secondary colors -->
+    <color name="secondary">#FFC107</color>
+    <color name="secondaryVariant">#FFB300</color>
+    <color name="colorOnSecondary">#000000</color>
+    
+    <!-- Surface colors -->
+    <color name="surface">#FFFFFF</color>
+    <color name="colorOnSurface">#000000</color>
+    
+    <!-- Background colors -->
+    <color name="background">#FFFFFF</color>
+    <color name="colorOnBackground">#000000</color>
+    
+    <!-- Error colors -->
+    <color name="error">#B00020</color>
+    <color name="colorOnError">#FFFFFF</color>
+    
+    <!-- Additional colors for Earth Quiz theme -->
+    <color name="earth_green">#4CAF50</color>
+    <color name="ocean_blue">#2196F3</color>
+    <color name="desert_yellow">#FF9800</color>
+    <color name="mountain_gray">#9E9E9E</color>
+    
+    <!-- Text colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#BDBDBD</color>
+</resources>
