@@ -2,25 +2,222 @@
   {
     "id": 1,
     "type": "text",
-    "topic": "رياضة",
+    "category": "رياضة",
+    "topic": "رياضة محلية",
+    "difficulty": "متوسط",
     "question": "كم مرة فازت مصر بكأس الأمم الإفريقية؟",
-    "options": ["5", "6", "7", "8"],
-    "correctIndex": 2
+    "options": ["5 مرات", "6 مرات", "7 مرات", "8 مرات"],
+    "correctIndex": 2,
+    "explanation": "فازت مصر بكأس الأمم الإفريقية 7 مرات آخرها في 2010"
   },
   {
     "id": 2,
-    "type": "text",
-    "topic": "جغرافيا",
-    "question": "ما هي عاصمة كندا؟",
-    "options": ["تورونتو", "فانكوفر", "أوتاوا", "مونتريال"],
-    "correctIndex": 2
+    "type": "image",
+    "category": "رياضة",
+    "topic": "كرة القدم",
+    "difficulty": "سهل",
+    "question": "من هذا اللاعب؟",
+    "image": "messi.jpg",
+    "options": ["ليونيل ميسي", "كريستيانو رونالدو", "نيمار", "مبابي"],
+    "correctIndex": 0,
+    "explanation": "ليونيل ميسي نجم برشلونة السابق وباريس سان جيرمان الحالي"
   },
   {
     "id": 3,
     "type": "text",
-    "topic": "معلومات عامة",
+    "category": "معلومات عامة",
+    "topic": "جغرافيا",
+    "difficulty": "متوسط",
+    "question": "ما هي عاصمة كندا؟",
+    "options": ["تورونتو", "فانكوفر", "أوتاوا", "مونتريال"],
+    "correctIndex": 2,
+    "explanation": "أوتاوا هي العاصمة الرسمية لكندا"
+  },
+  {
+    "id": 4,
+    "type": "text",
+    "category": "معلومات عامة",
+    "topic": "علوم",
+    "difficulty": "سهل",
     "question": "كم عدد الكواكب في النظام الشمسي؟",
     "options": ["7", "8", "9", "10"],
-    "correctIndex": 1
+    "correctIndex": 1,
+    "explanation": "يوجد 8 كواكب في النظام الشمسي بعد إعادة تصنيف بلوتو"
+  },
+  {
+    "id": 5,
+    "type": "text",
+    "category": "دين",
+    "topic": "القرآن الكريم",
+    "difficulty": "متوسط",
+    "question": "كم عدد سور القرآن الكريم؟",
+    "options": ["112", "113", "114", "115"],
+    "correctIndex": 2,
+    "explanation": "القرآن الكريم يحتوي على 114 سورة"
+  },
+  {
+    "id": 6,
+    "type": "text",
+    "category": "دين",
+    "topic": "التاريخ الإسلامي",
+    "difficulty": "صعب",
+    "question": "في أي عام هجري وقعت غزوة بدر؟",
+    "options": ["1 هجري", "2 هجري", "3 هجري", "4 هجري"],
+    "correctIndex": 1,
+    "explanation": "وقعت غزوة بدر في السنة الثانية للهجرة"
+  },
+  {
+    "id": 7,
+    "type": "text",
+    "category": "رياضة",
+    "topic": "رياضة عالمية",
+    "difficulty": "متوسط",
+    "question": "أين أقيمت كأس العالم 2018؟",
+    "options": ["البرازيل", "روسيا", "قطر", "ألمانيا"],
+    "correctIndex": 1,
+    "explanation": "أقيمت كأس العالم 2018 في روسيا"
+  },
+  {
+    "id": 8,
+    "type": "text",
+    "category": "معلومات عامة",
+    "topic": "تاريخ",
+    "difficulty": "صعب",
+    "question": "متى سقطت الخلافة العثمانية؟",
+    "options": ["1920", "1922", "1924", "1926"],
+    "correctIndex": 2,
+    "explanation": "انتهت الخلافة العثمانية رسمياً عام 1924"
+  },
+  {
+    "id": 9,
+    "type": "text",
+    "category": "ترفيه",
+    "topic": "أفلام",
+    "difficulty": "سهل",
+    "question": "من بطل فيلم \"الناصر صلاح الدين\"؟",
+    "options": ["أحمد زكي", "عادل إمام", "أحمد مظهر", "عمر الشريف"],
+    "correctIndex": 2,
+    "explanation": "أحمد مظهر هو من أدى دور صلاح الدين في هذا الفيلم الكلاسيكي"
+  },
+  {
+    "id": 10,
+    "type": "text",
+    "category": "تكنولوجيا",
+    "topic": "حاسوب",
+    "difficulty": "متوسط",
+    "question": "ما معنى CPU في الحاسوب؟",
+    "options": ["معالج مركزي", "ذاكرة عشوائية", "قرص صلب", "كارت شاشة"],
+    "correctIndex": 0,
+    "explanation": "CPU تعني Central Processing Unit أي المعالج المركزي"
+  },
+  {
+    "id": 11,
+    "type": "text",
+    "category": "رياضة",
+    "topic": "الألعاب الأولمبية",
+    "difficulty": "صعب",
+    "question": "أين أقيمت أولمبياد 1984؟",
+    "options": ["لوس أنجلوس", "سيول", "برشلونة", "أتلانتا"],
+    "correctIndex": 0,
+    "explanation": "أقيمت أولمبياد 1984 في لوس أنجلوس"
+  },
+  {
+    "id": 12,
+    "type": "text",
+    "category": "معلومات عامة",
+    "topic": "أدب",
+    "difficulty": "متوسط",
+    "question": "من كاتب رواية \"أولاد حارتنا\"؟",
+    "options": ["توفيق الحكيم", "نجيب محفوظ", "يوسف إدريس", "إحسان عبد القدوس"],
+    "correctIndex": 1,
+    "explanation": "نجيب محفوظ هو كاتب رواية أولاد حارتنا الحائز على نوبل"
+  },
+  {
+    "id": 13,
+    "type": "text",
+    "category": "ترفيه",
+    "topic": "مشاهير",
+    "difficulty": "سهل",
+    "question": "ما هو اسم مؤسس شركة آبل؟",
+    "options": ["بيل جيتس", "ستيف جوبز", "مارك زوكربيرج", "إيلون ماسك"],
+    "correctIndex": 1,
+    "explanation": "ستيف جوبز هو أحد مؤسسي شركة آبل"
+  },
+  {
+    "id": 14,
+    "type": "text",
+    "category": "دين",
+    "topic": "الفقه",
+    "difficulty": "متوسط",
+    "question": "كم ركعة في صلاة الفجر؟",
+    "options": ["ركعتان", "3 ركعات", "4 ركعات", "5 ركعات"],
+    "correctIndex": 0,
+    "explanation": "صلاة الفجر ركعتان فقط"
+  },
+  {
+    "id": 15,
+    "type": "text",
+    "category": "معلومات عامة",
+    "topic": "علوم",
+    "difficulty": "صعب",
+    "question": "ما هو العنصر الأكثر وفرة في الكون؟",
+    "options": ["الأكسجين", "الكربون", "الهيدروجين", "النيتروجين"],
+    "correctIndex": 2,
+    "explanation": "الهيدروجين هو العنصر الأكثر وفرة في الكون"
+  },
+  {
+    "id": 16,
+    "type": "text",
+    "category": "رياضة",
+    "topic": "كرة القدم",
+    "difficulty": "سهل",
+    "question": "كم لاعب في فريق كرة القدم؟",
+    "options": ["9", "10", "11", "12"],
+    "correctIndex": 2,
+    "explanation": "فريق كرة القدم يضم 11 لاعباً في الملعب"
+  },
+  {
+    "id": 17,
+    "type": "text",
+    "category": "تكنولوجيا",
+    "topic": "إنترنت",
+    "difficulty": "متوسط",
+    "question": "ما معنى WWW؟",
+    "options": ["World Wide Web", "Wireless Web World", "World Web Wired", "Web World Wide"],
+    "correctIndex": 0,
+    "explanation": "WWW تعني World Wide Web أي الشبكة العنكبوتية العالمية"
+  },
+  {
+    "id": 18,
+    "type": "text",
+    "category": "معلومات عامة",
+    "topic": "جغرافيا",
+    "difficulty": "سهل",
+    "question": "ما هي أكبر قارة في العالم؟",
+    "options": ["أفريقيا", "آسيا", "أمريكا الشمالية", "أوروبا"],
+    "correctIndex": 1,
+    "explanation": "آسيا هي أكبر قارات العالم من حيث المساحة والسكان"
+  },
+  {
+    "id": 19,
+    "type": "text",
+    "category": "ترفيه",
+    "topic": "موسيقى",
+    "difficulty": "متوسط",
+    "question": "من ملحن أغنية \"لما بدا يتثنى\"؟",
+    "options": ["محمد عبد الوهاب", "فريد الأطرش", "محمد الموجي", "تراث شعبي"],
+    "correctIndex": 3,
+    "explanation": "لما بدا يتثنى موشح أندلسي من التراث الشعبي"
+  },
+  {
+    "id": 20,
+    "type": "text",
+    "category": "دين",
+    "topic": "الحديث الشريف",
+    "difficulty": "صعب",
+    "question": "من راوي أكثر الأحاديث النبوية؟",
+    "options": ["أبو هريرة", "عائشة", "ابن عمر", "أنس بن مالك"],
+    "correctIndex": 0,
+    "explanation": "أبو هريرة هو أكثر الصحابة رواية للأحاديث النبوية"
   }
 ]
