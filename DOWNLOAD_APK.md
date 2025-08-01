@@ -6,7 +6,7 @@
 
 #### 1. **اذهب لصفحة المشروع:**
 ```
-https://github.com/[username]/EarthQuiz
+https://github.com/Thug_i8/EarthQuiz
 ```
 
 #### 2. **انقر على "Actions"** (في التبويبات العلوية)
@@ -41,10 +41,10 @@ https://github.com/[username]/EarthQuiz
 ## 🔗 روابط مباشرة:
 
 ### 🌐 **صفحة المشروع:**
-[EarthQuiz على GitHub](https://github.com/[username]/EarthQuiz)
+[EarthQuiz على GitHub](https://github.com/Thug_i8/EarthQuiz)
 
 ### ⚡ **صفحة Actions:**
-[تحميل APK مباشر](https://github.com/[username]/EarthQuiz/actions)
+[تحميل APK مباشر](https://github.com/Thug_i8/EarthQuiz/actions)
 
 ### 📚 **دليل الاستخدام:**
 [كيفية اللعب](USER_GUIDE.md)
@@ -73,7 +73,7 @@ https://github.com/[username]/EarthQuiz
 ## 📞 تحتاج مساعدة؟
 
 ### 💬 **تواصل معنا:**
-- **GitHub Issues**: [اكتب مشكلتك](https://github.com/[username]/EarthQuiz/issues)
+- **GitHub Issues**: [اكتب مشكلتك](https://github.com/Thug_i8/EarthQuiz/issues)
 - **البريد الإلكتروني**: Ammarx417x@gmail.com
 - **التعليقات**: في صفحة المشروع
 
