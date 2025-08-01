@@ -1,9 +1,11 @@
 package com.earth.quiz.ui.screens
 
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.clickable
 import androidx.compose.material3.*
@@ -15,10 +17,13 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.earth.quiz.data.Category
+import com.earth.quiz.ui.theme.QuizColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,7 +31,9 @@ fun MainMenuScreen(
     onStartQuiz: () -> Unit,
     onViewStats: () -> Unit,
     onSettings: () -> Unit,
-    onAbout: () -> Unit
+    onAbout: () -> Unit,
+    onDailyChallenge: () -> Unit,
+    onAchievements: () -> Unit
 ) {
     var showAnimations by remember { mutableStateOf(false) }
     
@@ -37,7 +44,7 @@ fun MainMenuScreen(
     val bounce by animateFloatAsState(
         targetValue = if (showAnimations) 1f else 0f,
         animationSpec = tween(
-            durationMillis = 1000,
+            durationMillis = 1200,
             easing = EaseOutBack
         ),
         label = "bounce"
@@ -46,48 +53,107 @@ fun MainMenuScreen(
     val fadeIn by animateFloatAsState(
         targetValue = if (showAnimations) 1f else 0f,
         animationSpec = tween(
-            durationMillis = 800,
-            delayMillis = 200
+            durationMillis = 1000,
+            delayMillis = 300
         ),
         label = "fadeIn"
     )
     
-    LazyColumn(
+    val slideIn by animateFloatAsState(
+        targetValue = if (showAnimations) 0f else 100f,
+        animationSpec = tween(
+            durationMillis = 800,
+            delayMillis = 500
+        ),
+        label = "slideIn"
+    )
+    
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        QuizColors.UltraDark,
+                        QuizColors.DarkGray,
+                        QuizColors.DeepPurple
+                    )
+                )
+            )
     ) {
-        // Header with animations
-        item {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.alpha(fadeIn)
-            ) {
-                Text(
-                    text = "⚡",
-                    fontSize = 60.sp,
-                    modifier = Modifier.scale(bounce)
-                )
-                
-                Spacer(modifier = Modifier.height(16.dp))
-                
-                Text(
-                    text = "EarthQuiz",
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                
-                Text(
-                    text = "اختبار معلومات الأرض 🌍",
-                    fontSize = 16.sp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                    textAlign = TextAlign.Center
-                )
-            }
+        // Animated background particles
+        repeat(15) { index ->
+            val particleOffset by animateFloatAsState(
+                targetValue = if (showAnimations) 1f else 0f,
+                animationSpec = tween(
+                    durationMillis = 3000 + (index * 200),
+                    delayMillis = index * 100
+                ),
+                label = "particle$index"
+            )
+            
+            Box(
+                modifier = Modifier
+                    .offset(
+                        x = (index * 60).dp * particleOffset,
+                        y = (index * 40).dp * particleOffset
+                    )
+                    .size(6.dp)
+                    .background(
+                        color = QuizColors.NeonPurple.copy(alpha = 0.2f),
+                        shape = CircleShape
+                    )
+            )
         }
+        
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
+            // Enhanced Header with animations
+            item {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .alpha(fadeIn)
+                        .offset(y = slideIn.dp)
+                ) {
+                    Text(
+                        text = "⚡",
+                        fontSize = 80.sp, // Bigger
+                        modifier = Modifier
+                            .scale(bounce)
+                            .graphicsLayer {
+                                shadowElevation = if (showAnimations) 25f else 0f
+                            },
+                        color = QuizColors.ElectricPurple
+                    )
+                    
+                    Spacer(modifier = Modifier.height(20.dp))
+                    
+                    Text(
+                        text = "EarthQuiz",
+                        fontSize = 48.sp, // Bigger
+                        fontWeight = FontWeight.Bold,
+                        color = QuizColors.ElectricPurple,
+                        modifier = Modifier.graphicsLayer {
+                            shadowElevation = if (showAnimations) 20f else 0f
+                        }
+                    )
+                    
+                    Spacer(modifier = Modifier.height(12.dp))
+                    
+                    Text(
+                        text = "اختبار معلومات الأرض 🌍",
+                        fontSize = 18.sp, // Bigger
+                        color = QuizColors.LightPurple,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
         
         // Menu buttons with staggered animations
         item {
@@ -106,11 +172,31 @@ fun MainMenuScreen(
         
         item {
             MenuButton(
+                text = "🔥 التحدي اليومي",
+                description = "اختبار سريع يومي",
+                icon = "⚡",
+                onClick = onDailyChallenge,
+                delay = 600
+            )
+        }
+        
+        item {
+            MenuButton(
+                text = "🏆 الإنجازات",
+                description = "عرض الإنجازات المكتسبة",
+                icon = "💎",
+                onClick = onAchievements,
+                delay = 800
+            )
+        }
+        
+        item {
+            MenuButton(
                 text = "📊 الإحصائيات",
                 description = "شاهد نتائجك السابقة",
                 icon = "📈",
                 onClick = onViewStats,
-                delay = 600
+                delay = 1000
             )
         }
         
@@ -120,7 +206,7 @@ fun MainMenuScreen(
                 description = "تخصيص التطبيق",
                 icon = "🔧",
                 onClick = onSettings,
-                delay = 800
+                delay = 1200
             )
         }
         
@@ -130,7 +216,7 @@ fun MainMenuScreen(
                 description = "معلومات عن EarthQuiz",
                 icon = "📖",
                 onClick = onAbout,
-                delay = 1000
+                delay = 1400
             )
         }
         
@@ -160,53 +246,79 @@ fun MenuButton(
     val buttonScale by animateFloatAsState(
         targetValue = if (showButton) 1f else 0f,
         animationSpec = tween(
-            durationMillis = 500,
+            durationMillis = 600,
             easing = EaseOutBack
         ),
         label = "buttonScale"
     )
     
+    val glow by animateFloatAsState(
+        targetValue = if (showButton) 1f else 0f,
+        animationSpec = tween(
+            durationMillis = 800,
+            delayMillis = 200
+        ),
+        label = "glow"
+    )
+    
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .scale(buttonScale),
+            .scale(buttonScale)
+            .graphicsLayer {
+                shadowElevation = if (showButton) 15f else 0f
+                alpha = glow
+            },
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
+            containerColor = QuizColors.MediumGray.copy(alpha = 0.8f)
         ),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(20.dp) // More rounded
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            QuizColors.DeepPurple.copy(alpha = 0.3f),
+                            QuizColors.PurpleAccent.copy(alpha = 0.2f)
+                        )
+                    )
+                )
                 .clickable { onClick() }
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(20.dp),
+                    .padding(24.dp), // More padding
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = icon,
-                    fontSize = 32.sp
+                    fontSize = 40.sp, // Bigger icon
+                    modifier = Modifier.graphicsLayer {
+                        shadowElevation = if (showButton) 10f else 0f
+                    }
                 )
                 
-                Spacer(modifier = Modifier.width(16.dp))
+                Spacer(modifier = Modifier.width(20.dp)) // More spacing
                 
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
                         text = text,
-                        fontSize = 18.sp,
+                        fontSize = 20.sp, // Bigger text
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = QuizColors.ElectricPurple
                     )
+                    
+                    Spacer(modifier = Modifier.height(4.dp))
                     
                     Text(
                         text = description,
-                        fontSize = 14.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                        fontSize = 16.sp, // Bigger description
+                        color = QuizColors.LightPurple
                     )
                 }
             }
@@ -217,32 +329,49 @@ fun MenuButton(
 @Composable
 fun QuickStatsCard() {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .graphicsLayer {
+                shadowElevation = 20f
+            },
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = QuizColors.DeepPurple.copy(alpha = 0.9f)
         ),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(24.dp) // More rounded
     ) {
-        Column(
-            modifier = Modifier.padding(20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            QuizColors.DeepPurple.copy(alpha = 0.8f),
+                            QuizColors.PurpleAccent.copy(alpha = 0.6f)
+                        )
+                    )
+                )
         ) {
-            Text(
-                text = "📊 إحصائيات سريعة",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
-            )
-            
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+            Column(
+                modifier = Modifier.padding(24.dp), // More padding
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                QuickStatItem("🎯", "0", "اختبارات")
-                QuickStatItem("⭐", "0", "نقاط")
-                QuickStatItem("🏆", "0", "إنجازات")
+                Text(
+                    text = "📊 إحصائيات سريعة",
+                    fontSize = 22.sp, // Bigger
+                    fontWeight = FontWeight.Bold,
+                    color = QuizColors.ElectricPurple
+                )
+                
+                Spacer(modifier = Modifier.height(20.dp)) // More spacing
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    QuickStatItem("🎯", "0", "اختبارات")
+                    QuickStatItem("⭐", "0", "نقاط")
+                    QuickStatItem("🏆", "0", "إنجازات")
+                }
             }
         }
     }
@@ -255,20 +384,28 @@ fun QuickStatItem(icon: String, value: String, label: String) {
     ) {
         Text(
             text = icon,
-            fontSize = 24.sp
+            fontSize = 32.sp, // Bigger icon
+            modifier = Modifier.graphicsLayer {
+                shadowElevation = 8f
+            }
         )
+        
+        Spacer(modifier = Modifier.height(8.dp))
         
         Text(
             text = value,
-            fontSize = 20.sp,
+            fontSize = 24.sp, // Bigger value
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onPrimaryContainer
+            color = QuizColors.ElectricPurple
         )
+        
+        Spacer(modifier = Modifier.height(4.dp))
         
         Text(
             text = label,
-            fontSize = 12.sp,
-            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+            fontSize = 14.sp, // Bigger label
+            color = QuizColors.LightPurple,
+            textAlign = TextAlign.Center
         )
     }
 }

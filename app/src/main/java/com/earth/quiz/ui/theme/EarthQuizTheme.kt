@@ -6,90 +6,83 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 
-// Color Palette
-private val Purple80 = Color(0xFFD0BCFF)
-private val PurpleGrey80 = Color(0xFFCCC2DC)
-private val Pink80 = Color(0xFFEFB8C8)
-
-private val Purple40 = Color(0xFF6650a4)
-private val PurpleGrey40 = Color(0xFF625b71)
-private val Pink40 = Color(0xFF7D5260)
-
-// Quiz App Colors
-private val QuizPrimary = Color(0xFF6A1B9A)
-private val QuizSecondary = Color(0xFF9C27B0)
-private val QuizTertiary = Color(0xFF4CAF50)
-
-private val QuizSuccess = Color(0xFF4CAF50)
-private val QuizError = Color(0xFFF44336)
-private val QuizWarning = Color(0xFFFF9800)
-private val QuizInfo = Color(0xFF2196F3)
+// Modern Dark Purple & Black Color Palette
+private val DeepPurple = Color(0xFF6A1B9A)
+private val PurpleAccent = Color(0xFF9C27B0)
+private val DarkPurple = Color(0xFF4A148C)
+private val LightPurple = Color(0xFFBA68C8)
+private val UltraDark = Color(0xFF0A0A0A)
+private val DarkGray = Color(0xFF1A1A1A)
+private val MediumGray = Color(0xFF2D2D2D)
+private val LightGray = Color(0xFF424242)
+private val NeonPurple = Color(0xFFE040FB)
+private val ElectricPurple = Color(0xFFAA00FF)
 
 private val LightColorScheme = lightColorScheme(
-    primary = QuizPrimary,
+    primary = DeepPurple,
     onPrimary = Color.White,
-    primaryContainer = Purple80,
-    onPrimaryContainer = Purple40,
-    secondary = QuizSecondary,
+    primaryContainer = LightPurple,
+    onPrimaryContainer = DarkPurple,
+    secondary = PurpleAccent,
     onSecondary = Color.White,
-    secondaryContainer = PurpleGrey80,
-    onSecondaryContainer = PurpleGrey40,
-    tertiary = QuizTertiary,
+    secondaryContainer = Color(0xFFE1BEE7),
+    onSecondaryContainer = DarkPurple,
+    tertiary = NeonPurple,
     onTertiary = Color.White,
-    tertiaryContainer = Pink80,
-    onTertiaryContainer = Pink40,
-    error = QuizError,
+    tertiaryContainer = Color(0xFFF3E5F5),
+    onTertiaryContainer = DarkPurple,
+    error = Color(0xFFD32F2F),
     onError = Color.White,
     errorContainer = Color(0xFFFFDAD6),
     onErrorContainer = Color(0xFF410002),
-    background = Color(0xFFFFFBFE),
-    onBackground = Color(0xFF1C1B1F),
-    surface = Color(0xFFFFFBFE),
-    onSurface = Color(0xFF1C1B1F),
-    surfaceVariant = Color(0xFFE7E0EC),
-    onSurfaceVariant = Color(0xFF49454F),
-    outline = Color(0xFF79747E),
-    outlineVariant = Color(0xFFCAC4D0),
+    background = Color(0xFFFAFAFA),
+    onBackground = UltraDark,
+    surface = Color.White,
+    onSurface = UltraDark,
+    surfaceVariant = Color(0xFFF3E5F5),
+    onSurfaceVariant = MediumGray,
+    outline = LightGray,
+    outlineVariant = Color(0xFFC7C7C7),
     scrim = Color(0xFF000000),
-    inverseSurface = Color(0xFF313033),
-    inverseOnSurface = Color(0xFFF4EFF4),
-    inversePrimary = Purple80,
-    surfaceTint = Color(0xFF6650a4)
+    inverseSurface = MediumGray,
+    inverseOnSurface = Color.White,
+    inversePrimary = LightPurple,
+    surfaceTint = DeepPurple
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    onPrimary = Purple40,
-    primaryContainer = Purple40,
-    onPrimaryContainer = Purple80,
-    secondary = PurpleGrey80,
-    onSecondary = PurpleGrey40,
-    secondaryContainer = PurpleGrey40,
-    onSecondaryContainer = PurpleGrey80,
-    tertiary = Pink80,
-    onTertiary = Pink40,
-    tertiaryContainer = Pink40,
-    onTertiaryContainer = Pink80,
+    primary = ElectricPurple,
+    onPrimary = Color.White,
+    primaryContainer = DeepPurple,
+    onPrimaryContainer = LightPurple,
+    secondary = PurpleAccent,
+    onSecondary = Color.White,
+    secondaryContainer = DarkPurple,
+    onSecondaryContainer = LightPurple,
+    tertiary = NeonPurple,
+    onTertiary = Color.White,
+    tertiaryContainer = DarkPurple,
+    onTertiaryContainer = LightPurple,
     error = Color(0xFFFFB4AB),
     onError = Color(0xFF690005),
     errorContainer = Color(0xFF93000A),
     onErrorContainer = Color(0xFFFFDAD6),
-    background = Color(0xFF0F0F0F),
-    onBackground = Color(0xFFE6E0E9),
-    surface = Color(0xFF0F0F0F),
-    onSurface = Color(0xFFE6E0E9),
-    surfaceVariant = Color(0xFF49454F),
-    onSurfaceVariant = Color(0xFFCAC4D0),
-    outline = Color(0xFF938F99),
-    outlineVariant = Color(0xFF49454F),
+    background = UltraDark,
+    onBackground = Color.White,
+    surface = DarkGray,
+    onSurface = Color.White,
+    surfaceVariant = MediumGray,
+    onSurfaceVariant = Color(0xFFC7C7C7),
+    outline = LightGray,
+    outlineVariant = MediumGray,
     scrim = Color(0xFF000000),
-    inverseSurface = Color(0xFFE6E0E9),
-    inverseOnSurface = Color(0xFF313033),
-    inversePrimary = Purple40,
-    surfaceTint = Color(0xFFD0BCFF)
+    inverseSurface = Color.White,
+    inverseOnSurface = UltraDark,
+    inversePrimary = DeepPurple,
+    surfaceTint = ElectricPurple
 )
 
-// Custom Typography
+// Custom Typography with modern feel
 private val QuizTypography = Typography(
     displayLarge = Typography().displayLarge.copy(
         fontFamily = FontFamily.Default,
@@ -110,7 +103,7 @@ private val QuizTypography = Typography(
 
 @Composable
 fun EarthQuizTheme(
-    darkTheme: Boolean = false, // You can make this dynamic based on system settings
+    darkTheme: Boolean = true, // Default to dark theme for cool look
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
@@ -124,11 +117,15 @@ fun EarthQuizTheme(
 
 // Extension colors for quiz-specific states
 object QuizColors {
-    val Success = QuizSuccess
-    val Error = QuizError
-    val Warning = QuizWarning
-    val Info = QuizInfo
+    val Success = Color(0xFF4CAF50)
+    val Error = Color(0xFFF44336)
+    val Warning = Color(0xFFFF9800)
+    val Info = Color(0xFF2196F3)
     val Gold = Color(0xFFFFD700)
     val Silver = Color(0xFFC0C0C0)
     val Bronze = Color(0xFFCD7F32)
+    val NeonPurple = NeonPurple
+    val ElectricPurple = ElectricPurple
+    val DeepPurple = DeepPurple
+    val UltraDark = UltraDark
 }

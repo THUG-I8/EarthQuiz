@@ -7,7 +7,7 @@ import com.earth.quiz.ui.theme.EarthQuizTheme
 import kotlinx.coroutines.delay
 
 enum class QuizState {
-    SPLASH, MAIN_MENU, SETUP, PLAYING, RESULTS, STATS, SETTINGS, ABOUT
+    SPLASH, MAIN_MENU, SETUP, PLAYING, RESULTS, STATS, SETTINGS, ABOUT, DAILY_CHALLENGE, ACHIEVEMENTS
 }
 
 @Composable
@@ -46,6 +46,12 @@ fun QuizScreen() {
                     },
                     onAbout = {
                         quizState = QuizState.ABOUT
+                    },
+                    onDailyChallenge = {
+                        quizState = QuizState.DAILY_CHALLENGE
+                    },
+                    onAchievements = {
+                        quizState = QuizState.ACHIEVEMENTS
                     }
                 )
             }
@@ -171,6 +177,25 @@ fun QuizScreen() {
             
             QuizState.ABOUT -> {
                 AboutScreen(
+                    onBack = {
+                        quizState = QuizState.MAIN_MENU
+                    }
+                )
+            }
+            
+            QuizState.DAILY_CHALLENGE -> {
+                DailyChallengeScreen(
+                    onBack = {
+                        quizState = QuizState.MAIN_MENU
+                    },
+                    onStartChallenge = {
+                        quizState = QuizState.SETUP
+                    }
+                )
+            }
+            
+            QuizState.ACHIEVEMENTS -> {
+                AchievementsScreen(
                     onBack = {
                         quizState = QuizState.MAIN_MENU
                     }
