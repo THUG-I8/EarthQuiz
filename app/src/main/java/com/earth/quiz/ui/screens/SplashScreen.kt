@@ -82,7 +82,7 @@ fun SplashScreen(
         contentAlignment = Alignment.Center
     ) {
         // Animated background particles
-        repeat(20) { index ->
+        for (index in 0 until 20) {
             val particleOffset by animateFloatAsState(
                 targetValue = if (startAnimation) 1f else 0f,
                 animationSpec = tween(

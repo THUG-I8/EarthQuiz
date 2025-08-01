@@ -82,7 +82,7 @@ fun MainMenuScreen(
             )
     ) {
         // Animated background particles
-        repeat(15) { index ->
+        for (index in 0 until 15) {
             val particleOffset by animateFloatAsState(
                 targetValue = if (showAnimations) 1f else 0f,
                 animationSpec = tween(

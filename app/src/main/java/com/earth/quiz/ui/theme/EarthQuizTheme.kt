@@ -124,8 +124,14 @@ object QuizColors {
     val Gold = Color(0xFFFFD700)
     val Silver = Color(0xFFC0C0C0)
     val Bronze = Color(0xFFCD7F32)
-    val NeonPurple = NeonPurple
-    val ElectricPurple = ElectricPurple
-    val DeepPurple = DeepPurple
-    val UltraDark = UltraDark
+    val NeonPurple = Color(0xFFE040FB)
+    val ElectricPurple = Color(0xFFAA00FF)
+    val DeepPurple = Color(0xFF6A1B9A)
+    val UltraDark = Color(0xFF0A0A0A)
+    val DarkGray = Color(0xFF1A1A1A)
+    val MediumGray = Color(0xFF2D2D2D)
+    val LightGray = Color(0xFF424242)
+    val PurpleAccent = Color(0xFF9C27B0)
+    val LightPurple = Color(0xFFBA68C8)
+    val DarkPurple = Color(0xFF4A148C)
 }
