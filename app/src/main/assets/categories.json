@@ -1,0 +1,57 @@
+[
+  {
+    "id": "sports",
+    "name": "رياضة",
+    "icon": "⚽",
+    "topics": [
+      {"id": "local_sports", "name": "رياضة محلية", "questionCount": 50},
+      {"id": "international_sports", "name": "رياضة عالمية", "questionCount": 75},
+      {"id": "football", "name": "كرة القدم", "questionCount": 100},
+      {"id": "olympics", "name": "الألعاب الأولمبية", "questionCount": 40}
+    ]
+  },
+  {
+    "id": "religion",
+    "name": "دين",
+    "icon": "🕌",
+    "topics": [
+      {"id": "quran", "name": "القرآن الكريم", "questionCount": 80},
+      {"id": "hadith", "name": "الحديث الشريف", "questionCount": 60},
+      {"id": "fiqh", "name": "الفقه", "questionCount": 45},
+      {"id": "islamic_history", "name": "التاريخ الإسلامي", "questionCount": 70}
+    ]
+  },
+  {
+    "id": "general",
+    "name": "معلومات عامة",
+    "icon": "🧠",
+    "topics": [
+      {"id": "science", "name": "علوم", "questionCount": 90},
+      {"id": "geography", "name": "جغرافيا", "questionCount": 85},
+      {"id": "history", "name": "تاريخ", "questionCount": 95},
+      {"id": "literature", "name": "أدب", "questionCount": 55}
+    ]
+  },
+  {
+    "id": "entertainment",
+    "name": "ترفيه",
+    "icon": "🎬",
+    "topics": [
+      {"id": "movies", "name": "أفلام", "questionCount": 60},
+      {"id": "music", "name": "موسيقى", "questionCount": 45},
+      {"id": "celebrities", "name": "مشاهير", "questionCount": 70},
+      {"id": "tv_shows", "name": "مسلسلات", "questionCount": 50}
+    ]
+  },
+  {
+    "id": "technology",
+    "name": "تكنولوجيا",
+    "icon": "💻",
+    "topics": [
+      {"id": "computers", "name": "حاسوب", "questionCount": 40},
+      {"id": "internet", "name": "إنترنت", "questionCount": 35},
+      {"id": "mobile", "name": "هواتف ذكية", "questionCount": 30},
+      {"id": "ai", "name": "ذكاء اصطناعي", "questionCount": 25}
+    ]
+  }
+]

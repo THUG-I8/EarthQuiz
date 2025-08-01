@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EarthQuiz</string>
+    
+    <!-- Main Screen -->
+    <string name="setup_quiz">🧠 إعداد الكويز</string>
+    <string name="quiz_results">🎯 نتائج الكويز</string>
+    
+    <!-- Categories -->
+    <string name="category_sports">⚽ رياضة</string>
+    <string name="category_religion">🕌 دين</string>
+    <string name="category_general">🧠 معلومات عامة</string>
+    <string name="category_entertainment">🎬 ترفيه</string>
+    <string name="category_technology">💻 تكنولوجيا</string>
+    
+    <!-- Difficulty Levels -->
+    <string name="difficulty_easy">سهل</string>
+    <string name="difficulty_medium">متوسط</string>
+    <string name="difficulty_hard">صعب</string>
+    <string name="difficulty_mix">ميكس</string>
+    
+    <!-- Actions -->
+    <string name="start_quiz">🚀 ابدأ الكويز</string>
+    <string name="restart_quiz">🔄 إعادة اللعب</string>
+    <string name="back_to_menu">🏠 القائمة الرئيسية</string>
+    <string name="share_result">📤 مشاركة النتيجة</string>
+    
+    <!-- Results -->
+    <string name="excellent">ممتاز</string>
+    <string name="very_good">جيد جداً</string>
+    <string name="good">جيد</string>
+    <string name="acceptable">مقبول</string>
+    <string name="needs_improvement">يحتاج تحسين</string>
+    
+    <!-- Statistics -->
+    <string name="correct_answers">✅ صحيح</string>
+    <string name="wrong_answers">❌ خطأ</string>
+    <string name="time_spent">⏱️ الوقت</string>
+    <string name="quiz_details">📊 تفاصيل الكويز</string>
+    <string name="review_mistakes">📝 مراجعة الأخطاء</string>
+    
+    <!-- Achievement -->
+    <string name="new_achievement">🏆 إنجاز جديد!</string>
+    <string name="excellent_score">حصلت على درجة ممتازة!</string>
+    
+    <!-- Timer -->
+    <string name="seconds_short">ث</string>
+    <string name="question_number">السؤال %1$d من %2$d</string>
+    
+    <!-- Setup -->
+    <string name="choose_category">اختر الفئة:</string>
+    <string name="choose_topic">اختر الموضوع:</string>
+    <string name="question_count">عدد الأسئلة: %1$d</string>
+    <string name="time_per_question">الوقت لكل سؤال: %1$d ثانية</string>
+    <string name="difficulty_level">مستوى الصعوبة:</string>
+    
+    <!-- Explanation -->
+    <string name="explanation_prefix">💡 شرح الإجابة:</string>
+    <string name="correct_answer">الإجابة الصحيحة: %1$s</string>
+</resources>
