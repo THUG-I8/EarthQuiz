@@ -234,16 +234,16 @@ fun QuickStatsCard() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                StatItem("🎯", "0", "اختبارات")
-                StatItem("⭐", "0", "نقاط")
-                StatItem("🏆", "0", "إنجازات")
+                QuickStatItem("🎯", "0", "اختبارات")
+                QuickStatItem("⭐", "0", "نقاط")
+                QuickStatItem("🏆", "0", "إنجازات")
             }
         }
     }
 }
 
 @Composable
-fun StatItem(icon: String, value: String, label: String) {
+fun QuickStatItem(icon: String, value: String, label: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
