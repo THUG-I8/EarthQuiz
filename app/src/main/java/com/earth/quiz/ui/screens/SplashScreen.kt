@@ -26,7 +26,7 @@ fun SplashScreen(
 ) {
     var startAnimation by remember { mutableStateOf(false) }
     val rotation by animateFloatAsState(
-        targetValue = if (startAnimation) 720f else 0f, // Double rotation for extra coolness
+        targetValue = if (startAnimation) 720f else 0f,
         animationSpec = tween(
             durationMillis = 2500,
             easing = EaseInOutCubic
@@ -35,7 +35,7 @@ fun SplashScreen(
     )
     
     val scale by animateFloatAsState(
-        targetValue = if (startAnimation) 1.5f else 0.5f, // Bigger scale for impact
+        targetValue = if (startAnimation) 1.5f else 0.5f,
         animationSpec = tween(
             durationMillis = 2000,
             easing = EaseOutBack
@@ -52,18 +52,9 @@ fun SplashScreen(
         label = "alpha"
     )
     
-    val glow by animateFloatAsState(
-        targetValue = if (startAnimation) 1f else 0f,
-        animationSpec = tween(
-            durationMillis = 1500,
-            delayMillis = 1000
-        ),
-        label = "glow"
-    )
-    
     LaunchedEffect(key1 = true) {
         startAnimation = true
-        delay(3500) // Longer duration for cool effect
+        delay(3500)
         onSplashComplete()
     }
     
@@ -81,31 +72,6 @@ fun SplashScreen(
             ),
         contentAlignment = Alignment.Center
     ) {
-        // Animated background particles
-        repeat(20) { index ->
-            val particleOffset by animateFloatAsState(
-                targetValue = if (startAnimation) 1f else 0f,
-                animationSpec = tween(
-                    durationMillis = 2000 + (index * 100),
-                    delayMillis = index * 50
-                ),
-                label = "particle$index"
-            )
-            
-            Box(
-                modifier = Modifier
-                    .offset(
-                        x = (index * 40).dp * particleOffset,
-                        y = (index * 30).dp * particleOffset
-                    )
-                    .size(4.dp)
-                    .background(
-                        color = QuizColors.NeonPurple.copy(alpha = 0.3f),
-                        shape = CircleShape
-                    )
-            )
-        }
-        
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -113,7 +79,7 @@ fun SplashScreen(
             // Lightning bolt with enhanced rotation and glow
             Text(
                 text = "⚡",
-                fontSize = 120.sp, // Bigger size
+                fontSize = 120.sp,
                 modifier = Modifier
                     .rotate(rotation)
                     .scale(scale)
@@ -129,7 +95,7 @@ fun SplashScreen(
             // App name with enhanced styling
             Text(
                 text = "EarthQuiz",
-                fontSize = 56.sp, // Bigger font
+                fontSize = 56.sp,
                 fontWeight = FontWeight.Bold,
                 color = QuizColors.ElectricPurple,
                 modifier = Modifier
@@ -145,7 +111,7 @@ fun SplashScreen(
             // Subtitle with enhanced styling
             Text(
                 text = "اختبار معلومات الأرض 🌍",
-                fontSize = 20.sp, // Bigger font
+                fontSize = 20.sp,
                 color = QuizColors.LightPurple,
                 modifier = Modifier.alpha(alpha),
                 textAlign = TextAlign.Center
@@ -156,8 +122,8 @@ fun SplashScreen(
             // Enhanced loading indicator
             LinearProgressIndicator(
                 modifier = Modifier
-                    .width(250.dp) // Wider
-                    .height(8.dp) // Thicker
+                    .width(250.dp)
+                    .height(8.dp)
                     .alpha(alpha),
                 color = QuizColors.NeonPurple,
                 trackColor = QuizColors.MediumGray

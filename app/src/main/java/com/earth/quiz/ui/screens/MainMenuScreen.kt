@@ -81,31 +81,6 @@ fun MainMenuScreen(
                 )
             )
     ) {
-        // Animated background particles
-        repeat(15) { index ->
-            val particleOffset by animateFloatAsState(
-                targetValue = if (showAnimations) 1f else 0f,
-                animationSpec = tween(
-                    durationMillis = 3000 + (index * 200),
-                    delayMillis = index * 100
-                ),
-                label = "particle$index"
-            )
-            
-            Box(
-                modifier = Modifier
-                    .offset(
-                        x = (index * 60).dp * particleOffset,
-                        y = (index * 40).dp * particleOffset
-                    )
-                    .size(6.dp)
-                    .background(
-                        color = QuizColors.NeonPurple.copy(alpha = 0.2f),
-                        shape = CircleShape
-                    )
-            )
-        }
-        
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -123,7 +98,7 @@ fun MainMenuScreen(
                 ) {
                     Text(
                         text = "⚡",
-                        fontSize = 80.sp, // Bigger
+                        fontSize = 80.sp,
                         modifier = Modifier
                             .scale(bounce)
                             .graphicsLayer {
@@ -136,7 +111,7 @@ fun MainMenuScreen(
                     
                     Text(
                         text = "EarthQuiz",
-                        fontSize = 48.sp, // Bigger
+                        fontSize = 48.sp,
                         fontWeight = FontWeight.Bold,
                         color = QuizColors.ElectricPurple,
                         modifier = Modifier.graphicsLayer {
@@ -148,93 +123,101 @@ fun MainMenuScreen(
                     
                     Text(
                         text = "اختبار معلومات الأرض 🌍",
-                        fontSize = 18.sp, // Bigger
+                        fontSize = 18.sp,
                         color = QuizColors.LightPurple,
                         textAlign = TextAlign.Center
                     )
                 }
             }
-        
-        // Menu buttons with staggered animations
-        item {
-            Spacer(modifier = Modifier.height(32.dp))
-        }
-        
-        item {
-            MenuButton(
-                text = "🚀 ابدأ الكويز",
-                description = "اختر الفئة وابدأ الاختبار",
-                icon = "🎯",
-                onClick = onStartQuiz,
-                delay = 400
-            )
-        }
-        
-        item {
-            MenuButton(
-                text = "🔥 التحدي اليومي",
-                description = "اختبار سريع يومي",
-                icon = "⚡",
-                onClick = onDailyChallenge,
-                delay = 600
-            )
-        }
-        
-        item {
-            MenuButton(
-                text = "🏆 الإنجازات",
-                description = "عرض الإنجازات المكتسبة",
-                icon = "💎",
-                onClick = onAchievements,
-                delay = 800
-            )
-        }
-        
-        item {
-            MenuButton(
-                text = "📊 الإحصائيات",
-                description = "شاهد نتائجك السابقة",
-                icon = "📈",
-                onClick = onViewStats,
-                delay = 1000
-            )
-        }
-        
-        item {
-            MenuButton(
-                text = "⚙️ الإعدادات",
-                description = "تخصيص التطبيق",
-                icon = "🔧",
-                onClick = onSettings,
-                delay = 1200
-            )
-        }
-        
-        item {
-            MenuButton(
-                text = "ℹ️ حول التطبيق",
-                description = "معلومات عن EarthQuiz",
-                icon = "📖",
-                onClick = onAbout,
-                delay = 1400
-            )
-        }
-        
-        // Quick stats card
-        item {
-            Spacer(modifier = Modifier.height(24.dp))
-            QuickStatsCard()
+            
+            // Menu buttons
+            item {
+                Spacer(modifier = Modifier.height(32.dp))
+            }
+            
+            item {
+                createMenuButton(
+                    text = "🚀 ابدأ الكويز",
+                    description = "اختر الفئة وابدأ الاختبار",
+                    icon = "🎯",
+                    onClick = onStartQuiz,
+                    delay = 400,
+                    showAnimations = showAnimations
+                )
+            }
+            
+            item {
+                createMenuButton(
+                    text = "🔥 التحدي اليومي",
+                    description = "اختبار سريع يومي",
+                    icon = "⚡",
+                    onClick = onDailyChallenge,
+                    delay = 600,
+                    showAnimations = showAnimations
+                )
+            }
+            
+            item {
+                createMenuButton(
+                    text = "🏆 الإنجازات",
+                    description = "عرض الإنجازات المكتسبة",
+                    icon = "💎",
+                    onClick = onAchievements,
+                    delay = 800,
+                    showAnimations = showAnimations
+                )
+            }
+            
+            item {
+                createMenuButton(
+                    text = "📊 الإحصائيات",
+                    description = "شاهد نتائجك السابقة",
+                    icon = "📈",
+                    onClick = onViewStats,
+                    delay = 1000,
+                    showAnimations = showAnimations
+                )
+            }
+            
+            item {
+                createMenuButton(
+                    text = "⚙️ الإعدادات",
+                    description = "تخصيص التطبيق",
+                    icon = "🔧",
+                    onClick = onSettings,
+                    delay = 1200,
+                    showAnimations = showAnimations
+                )
+            }
+            
+            item {
+                createMenuButton(
+                    text = "ℹ️ حول التطبيق",
+                    description = "معلومات عن EarthQuiz",
+                    icon = "📖",
+                    onClick = onAbout,
+                    delay = 1400,
+                    showAnimations = showAnimations
+                )
+            }
+            
+            // Quick stats card
+            item {
+                Spacer(modifier = Modifier.height(24.dp))
+                createQuickStatsCard(showAnimations)
+            }
         }
     }
 }
 
 @Composable
-fun MenuButton(
+private fun createMenuButton(
     text: String,
     description: String,
     icon: String,
     onClick: () -> Unit,
-    delay: Int
+    delay: Int,
+    showAnimations: Boolean
 ) {
     var showButton by remember { mutableStateOf(false) }
     
@@ -272,7 +255,7 @@ fun MenuButton(
         colors = CardDefaults.cardColors(
             containerColor = QuizColors.MediumGray.copy(alpha = 0.8f)
         ),
-        shape = RoundedCornerShape(20.dp) // More rounded
+        shape = RoundedCornerShape(20.dp)
     ) {
         Box(
             modifier = Modifier
@@ -290,25 +273,25 @@ fun MenuButton(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(24.dp), // More padding
+                    .padding(24.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = icon,
-                    fontSize = 40.sp, // Bigger icon
+                    fontSize = 40.sp,
                     modifier = Modifier.graphicsLayer {
                         shadowElevation = if (showButton) 10f else 0f
                     }
                 )
                 
-                Spacer(modifier = Modifier.width(20.dp)) // More spacing
+                Spacer(modifier = Modifier.width(20.dp))
                 
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
                         text = text,
-                        fontSize = 20.sp, // Bigger text
+                        fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = QuizColors.ElectricPurple
                     )
@@ -317,7 +300,7 @@ fun MenuButton(
                     
                     Text(
                         text = description,
-                        fontSize = 16.sp, // Bigger description
+                        fontSize = 16.sp,
                         color = QuizColors.LightPurple
                     )
                 }
@@ -327,7 +310,7 @@ fun MenuButton(
 }
 
 @Composable
-fun QuickStatsCard() {
+private fun createQuickStatsCard(showAnimations: Boolean) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -337,7 +320,7 @@ fun QuickStatsCard() {
         colors = CardDefaults.cardColors(
             containerColor = QuizColors.DeepPurple.copy(alpha = 0.9f)
         ),
-        shape = RoundedCornerShape(24.dp) // More rounded
+        shape = RoundedCornerShape(24.dp)
     ) {
         Box(
             modifier = Modifier
@@ -352,25 +335,25 @@ fun QuickStatsCard() {
                 )
         ) {
             Column(
-                modifier = Modifier.padding(24.dp), // More padding
+                modifier = Modifier.padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = "📊 إحصائيات سريعة",
-                    fontSize = 22.sp, // Bigger
+                    fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
                     color = QuizColors.ElectricPurple
                 )
                 
-                Spacer(modifier = Modifier.height(20.dp)) // More spacing
+                Spacer(modifier = Modifier.height(20.dp))
                 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    QuickStatItem("🎯", "0", "اختبارات")
-                    QuickStatItem("⭐", "0", "نقاط")
-                    QuickStatItem("🏆", "0", "إنجازات")
+                    createQuickStatItem("🎯", "0", "اختبارات")
+                    createQuickStatItem("⭐", "0", "نقاط")
+                    createQuickStatItem("🏆", "0", "إنجازات")
                 }
             }
         }
@@ -378,13 +361,13 @@ fun QuickStatsCard() {
 }
 
 @Composable
-fun QuickStatItem(icon: String, value: String, label: String) {
+private fun createQuickStatItem(icon: String, value: String, label: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = icon,
-            fontSize = 32.sp, // Bigger icon
+            fontSize = 32.sp,
             modifier = Modifier.graphicsLayer {
                 shadowElevation = 8f
             }
@@ -394,7 +377,7 @@ fun QuickStatItem(icon: String, value: String, label: String) {
         
         Text(
             text = value,
-            fontSize = 24.sp, // Bigger value
+            fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = QuizColors.ElectricPurple
         )
@@ -403,7 +386,7 @@ fun QuickStatItem(icon: String, value: String, label: String) {
         
         Text(
             text = label,
-            fontSize = 14.sp, // Bigger label
+            fontSize = 14.sp,
             color = QuizColors.LightPurple,
             textAlign = TextAlign.Center
         )
